@@ -5,7 +5,8 @@ const options = {
   token: core.getInput('github-token'),
   environment: core.getInput('environment'),
   timeout: core.getInput('timeout'),
-  interval: core.getInput('interval')
+  interval: core.getInput('interval'),
+  shaOption: core.getInput('sha')
 }
 
 waitForDeployment(options)
@@ -21,12 +22,17 @@ async function waitForDeployment (options) {
   const {
     token,
     interval,
-    environment
+    environment,
+    shaOption
   } = options
 
   const timeout = parseInt(options.timeout) || 30
-
-  const { sha } = github.context
+ 
+  var sha = github.context.sha;
+  if (shaOption != "branch-head") {
+    sha = shaOption;
+  }
+  
   const octokit = github.getOctokit(token)
   const start = Date.now()
 
