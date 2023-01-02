@@ -18,6 +18,9 @@ inputs:
   interval:
     description: The number of seconds to wait between repeated checks for deployments.
     default: 5
+  sha:
+    description: Commit SHA to wait for
+    default: branch-head
 
 outputs:
   url:
