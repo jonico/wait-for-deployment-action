@@ -4,7 +4,7 @@ description: |
   and get the URL for running any further tests.
 branding:
   icon: clock
-  color: black
+  color: gray-dark
 
 inputs:
   github-token:
@@ -14,13 +14,13 @@ inputs:
     description: The deployment environment to wait for
   timeout:
     description: The number of seconds after which to fail if no deployment is found.
-    default: 30
+    default: "30"
   interval:
     description: The number of seconds to wait between repeated checks for deployments.
-    default: 5
+    default: "5"
   sha:
     description: Commit SHA to wait for
-    default: branch-head
+    default: "branch-head"
 
 outputs:
   url:
